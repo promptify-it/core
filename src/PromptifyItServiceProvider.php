@@ -2,9 +2,9 @@
 
 namespace PromptifyIt\PromptifyIt;
 
+use PromptifyIt\PromptifyIt\Commands\PromptifyItCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use PromptifyIt\PromptifyIt\Commands\PromptifyItCommand;
 
 class PromptifyItServiceProvider extends PackageServiceProvider
 {
