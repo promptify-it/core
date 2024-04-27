@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace PromptifyIt\PromptifyIt\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class PromptifyItCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'promptify-it';
 
     public $description = 'My command';
 
