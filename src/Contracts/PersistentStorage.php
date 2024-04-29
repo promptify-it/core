@@ -1,4 +1,5 @@
 <?php
+
 namespace PromptifyIt\PromptifyIt\Contracts;
 
 interface PersistentStorage

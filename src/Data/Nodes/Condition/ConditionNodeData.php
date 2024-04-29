@@ -41,4 +41,3 @@ class ConditionNodeData extends NodeData implements Executable
         }
     }
 }
-

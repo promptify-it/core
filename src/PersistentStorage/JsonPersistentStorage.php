@@ -106,4 +106,3 @@ class JsonPersistentStorage implements PersistentStorage
         return getenv('HOME').'/.dcli/storage.json';
     }
 }
-

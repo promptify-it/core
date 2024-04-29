@@ -2,7 +2,6 @@
 
 namespace PromptifyIt\PromptifyIt\Loaders;
 
-use App\Data\RootData;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use PromptifyIt\PromptifyIt\Contracts\Loader;
@@ -15,7 +14,7 @@ class RemoteLoader implements Loader
     {
         $token = PersistentStorage::get('token');
 
-        if (!$token) {
+        if (! $token) {
             return [];
         }
 

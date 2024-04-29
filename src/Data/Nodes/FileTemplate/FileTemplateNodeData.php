@@ -41,7 +41,7 @@ class FileTemplateNodeData extends NodeData implements Executable
     {
         $directory = dirname($this->content->output);
 
-        if (!is_dir($directory)) {
+        if (! is_dir($directory)) {
             mkdir($directory, 0755, true);
         }
     }

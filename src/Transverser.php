@@ -1,4 +1,5 @@
 <?php
+
 namespace PromptifyIt\PromptifyIt;
 
 use PromptifyIt\PromptifyIt\Contracts\Executable;

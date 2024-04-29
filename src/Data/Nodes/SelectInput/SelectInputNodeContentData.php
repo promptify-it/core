@@ -2,7 +2,6 @@
 
 namespace PromptifyIt\PromptifyIt\Data\Nodes\SelectInput;
 
-use Illuminate\Support\Collection;
 use Spatie\LaravelData\Data;
 
 class SelectInputNodeContentData extends Data

@@ -1,4 +1,5 @@
 <?php
+
 namespace PromptifyIt\PromptifyIt\Facades;
 
 use Illuminate\Support\Facades\Facade;

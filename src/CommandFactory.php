@@ -1,4 +1,5 @@
 <?php
+
 namespace PromptifyIt\PromptifyIt;
 
 use Illuminate\Console\Command;

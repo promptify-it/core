@@ -8,10 +8,6 @@ trait ProvidesReplacers
 
     /**
      * Provide replacers for the given key and value.
-     *
-     * @param string $key
-     * @param string $value
-     * @param array $data
      */
     public function provideReplacersFor(string $key, string $value, array &$data)
     {
@@ -25,6 +21,6 @@ trait ProvidesReplacers
 
     private function composeKey(string $key, string $transformer): string
     {
-        return $key . $this->transformerGlue . $transformer;
+        return $key.$this->transformerGlue.$transformer;
     }
 }

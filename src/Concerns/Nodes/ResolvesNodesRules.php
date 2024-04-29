@@ -1,4 +1,5 @@
 <?php
+
 namespace PromptifyIt\PromptifyIt\Concerns\Nodes;
 
 use Spatie\LaravelData\Support\Validation\ValidationContext;
@@ -14,7 +15,7 @@ trait ResolvesNodesRules
     {
         $rules = [
             'nodes' => ['required', 'array'],
-            'nodes.*.type' => ['required', 'string', 'in:' . implode(',', array_keys(resolve('promptify-it.nodes')))],
+            'nodes.*.type' => ['required', 'string', 'in:'.implode(',', array_keys(resolve('promptify-it.nodes')))],
         ];
 
         $rules = array_merge($rules, self::recursiveNodeRules($context->payload['nodes'], 'nodes'));
@@ -28,7 +29,7 @@ trait ResolvesNodesRules
 
         foreach ($nodes as $index => $node) {
             $rules["{$path}.{$index}.nodes"] = ['required', 'array'];
-            $rules["{$path}.{$index}.nodes.*.type"] = ['required', 'string', 'in:' . implode(',', array_keys(resolve('promptify-it.nodes')))];
+            $rules["{$path}.{$index}.nodes.*.type"] = ['required', 'string', 'in:'.implode(',', array_keys(resolve('promptify-it.nodes')))];
 
             $contentRules = resolve('promptify-it.nodes')[str($node['type'])->camel()->toString()]['nodeContentData']::getValidationRules($node['content']);
 

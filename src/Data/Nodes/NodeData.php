@@ -8,19 +8,18 @@ use PromptifyIt\PromptifyIt\Concerns\Nodes\ProvidesReplacers;
 use PromptifyIt\PromptifyIt\Concerns\Nodes\ReplacesWithVariables;
 use PromptifyIt\PromptifyIt\Concerns\Nodes\ResolvesNodesRules;
 use PromptifyIt\PromptifyIt\Contracts\Executable;
+use Spatie\LaravelData\Attributes\Computed;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Data;
-use Spatie\LaravelData\Attributes\Computed;
-use Spatie\LaravelData\Support\Validation\ValidationContext;
 
 /**
  * @property NodeData[] $nodes
  */
 abstract class NodeData extends Data implements Executable
 {
-    use ResolvesNodesRules;
     use ProvidesReplacers;
     use ReplacesWithVariables;
+    use ResolvesNodesRules;
 
     #[Computed]
     public string $type;

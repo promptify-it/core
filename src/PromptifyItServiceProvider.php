@@ -65,7 +65,7 @@ class PromptifyItServiceProvider extends PackageServiceProvider
     {
         $nodes = [];
 
-        $directory = __DIR__ . '/Data/Nodes';
+        $directory = __DIR__.'/Data/Nodes';
 
         $files = scandir($directory);
 
@@ -74,13 +74,13 @@ class PromptifyItServiceProvider extends PackageServiceProvider
                 continue;
             }
 
-            if (is_file($directory . '/' . $file)) {
+            if (is_file($directory.'/'.$file)) {
                 continue;
             }
 
             $nodes[str($file)->camel()->toString()] = [
-                'nodeData' => 'PromptifyIt\\PromptifyIt\\Data\\Nodes\\' . $file . '\\' . $file . 'NodeData',
-                'nodeContentData' => 'PromptifyIt\\PromptifyIt\\Data\\Nodes\\' . $file . '\\' . $file . 'NodeContentData',
+                'nodeData' => 'PromptifyIt\\PromptifyIt\\Data\\Nodes\\'.$file.'\\'.$file.'NodeData',
+                'nodeContentData' => 'PromptifyIt\\PromptifyIt\\Data\\Nodes\\'.$file.'\\'.$file.'NodeContentData',
             ];
         }
 
