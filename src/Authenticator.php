@@ -12,7 +12,7 @@ class Authenticator implements AuthenticatorContract
 {
     private function getUser(string $token)
     {
-        return Http::withToken($token)->get(config('promptify-it.client.url').'/api/user');
+        return Http::withToken($token)->get(config('promptify-it.client.url').'/api/v1/user');
     }
 
     public function authenticate(string $token): bool
@@ -22,6 +22,8 @@ class Authenticator implements AuthenticatorContract
         if ($response->status() !== 200) {
             return false;
         }
+
+        PersistentStorage::set('token', $token);
 
         return true;
     }
