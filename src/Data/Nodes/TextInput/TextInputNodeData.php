@@ -30,12 +30,8 @@ class TextInputNodeData extends NodeData implements Executable
         }
     }
 
-    private function resolveDefault($data): ?string
+    private function resolveDefault($data): string
     {
-        if ($this->content->default !== null) {
-            return $this->replaceWithVariables($this->content->default, $data);
-        }
-
-        return $this->content->default;
+        return $this->replaceWithVariables($this->content->default, $data);
     }
 }

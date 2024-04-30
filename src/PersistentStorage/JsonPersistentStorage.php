@@ -75,7 +75,9 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function remove(string $key): void
     {
-        Arr::forget($this->data(), $key);
+        $data = $this->data();
+
+        Arr::forget($data, $key);
 
         $this->save();
     }

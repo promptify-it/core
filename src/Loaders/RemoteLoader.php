@@ -15,13 +15,13 @@ class RemoteLoader implements Loader
         $token = PersistentStorage::get('token');
 
         if (! $token) {
-            return [];
+            return collect([]);
         }
 
         $response = Http::withToken($token)->get('http://dcli-web.test/api/v1/commands');
 
         if ($response->json() == null) {
-            return [];
+            return collect([]);
         }
 
         return collect($response->json())->map(function ($command) {

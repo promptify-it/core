@@ -11,8 +11,8 @@ class Node implements Cast
 {
     public function cast(DataProperty $property, mixed $value, array $properties, CreationContext $context): mixed
     {
-        if (is_array($value)) {
-            return $this->castNodes($value);
+        if (! is_array($value)) {
+            throw new Exception('The value must be an array');
         }
 
         return $this->castNodes($value);
