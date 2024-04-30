@@ -23,13 +23,23 @@ class PromptifyItServiceProvider extends PackageServiceProvider
      */
     public function registeringPackage()
     {
-        $this
-            ->bindAuthenticator()
-            ->bindLoader()
-            ->bindPersistentStorage()
-            ->bindNodesUsingType();
+        $this->bindServices();
     }
 
+    /**
+     * Bind the services.
+     * Automatically call each method that starts with "bind".
+     */
+    protected function bindServices(): void
+    {
+        collect(get_class_methods($this))
+            ->filter(fn ($method) => str_starts_with($method, 'bind'))
+            ->each(fn ($method) => $this->$method());
+    }
+
+    /**
+     * Bind the authenticator.
+     */
     public function bindAuthenticator(): self
     {
         $this->app->bind(Contracts\Authenticator::class, Authenticator::class);
@@ -43,6 +53,26 @@ class PromptifyItServiceProvider extends PackageServiceProvider
     public function bindLoader(): self
     {
         $this->app->bind(Contracts\Loader::class, Loaders\RemoteLoader::class);
+
+        return $this;
+    }
+
+    /**
+     * Bind the transverser.
+     */
+    protected function bindTransverser(): self
+    {
+        $this->app->bind(Contracts\Transverser::class, Transverser::class);
+
+        return $this;
+    }
+
+    /**
+     * Bind the command factory.
+     */
+    protected function bindCommandFactory(): self
+    {
+        $this->app->bind(Contracts\CommandFactory::class, CommandFactory::class);
 
         return $this;
     }

@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use PromptifyIt\PromptifyIt\Contracts\CommandFactory as CommandFactoryContract;
 use PromptifyIt\PromptifyIt\Data\CommandData;
 
-class CommandRegister implements CommandFactoryContract
+class CommandFactory implements CommandFactoryContract
 {
     public function factory(CommandData $commandData): Command
     {
