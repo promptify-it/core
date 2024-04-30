@@ -12,7 +12,7 @@ class Authenticator implements AuthenticatorContract
 {
     private function getUser(string $token)
     {
-        return Http::withToken($token)->get(config('promptify-it.client.url') . '/api/user');
+        return Http::withToken($token)->get(config('promptify-it.client.url').'/api/user');
     }
 
     public function authenticate(string $token): bool
