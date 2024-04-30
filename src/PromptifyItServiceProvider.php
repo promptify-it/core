@@ -34,6 +34,7 @@ class PromptifyItServiceProvider extends PackageServiceProvider
     {
         collect(get_class_methods($this))
             ->filter(fn ($method) => str_starts_with($method, 'bind'))
+            ->filter(fn ($method) => $method !== 'bindServices')
             ->each(fn ($method) => $this->$method());
     }
 
