@@ -24,9 +24,17 @@ class PromptifyItServiceProvider extends PackageServiceProvider
     public function registeringPackage()
     {
         $this
+            ->bindAuthenticator()
             ->bindLoader()
             ->bindPersistentStorage()
             ->bindNodesUsingType();
+    }
+
+    public function bindAuthenticator(): self
+    {
+        $this->app->bind(Contracts\Authenticator::class, Authenticator::class);
+
+        return $this;
     }
 
     /**
