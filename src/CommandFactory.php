@@ -18,10 +18,10 @@ class CommandFactory implements CommandFactoryContract
 
             public function __construct(protected CommandData $commandData)
             {
-                parent::__construct();
-
                 $this->signature = $commandData->signature;
                 $this->description = $commandData->description;
+
+                parent::__construct();
             }
 
             public function handle(): void
