@@ -18,6 +18,7 @@ class Transverser
         $data = [
             'PFY_COMMAND_SIGNATURE' => $this->commandData->signature,
             'PFY_EXECUTION_TIME' => now()->format('Y-m-d H:i:s'),
+            ...getenv(),
         ];
 
         collect($this->commandData->root->nodes)->each(function (Executable $node) use (&$data) {
