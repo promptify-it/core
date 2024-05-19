@@ -19,6 +19,7 @@ class RemoteLoader implements Loader
         }
 
         $response = Http::withToken($token)
+            ->withoutVerifying()
             ->acceptJson()
             ->get(config('promptify-it.client.url').'/api/v1/commands');
 
