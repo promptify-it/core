@@ -38,6 +38,10 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function get(string $key, $default = null): mixed
     {
+        if (! $this->loaded) {
+            $this->data = $this->load();
+        }
+
         return Arr::get($this->data, $key, $default);
     }
 
@@ -46,6 +50,10 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function set(string $key, $value): void
     {
+        if (! $this->loaded) {
+            $this->data = $this->load();
+        }
+
         Arr::set($this->data, $key, $value);
 
         $this->save();
@@ -56,6 +64,10 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function has(string $key): bool
     {
+        if (! $this->loaded) {
+            $this->data = $this->load();
+        }
+
         return Arr::has($this->data, $key);
     }
 
@@ -64,6 +76,10 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function remove(string $key): void
     {
+        if (! $this->loaded) {
+            $this->data = $this->load();
+        }
+
         $data = $this->data;
 
         Arr::forget($data, $key);
@@ -86,6 +102,10 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function all(): array
     {
+        if (! $this->loaded) {
+            $this->data = $this->load();
+        }
+
         return $this->data;
     }
 
