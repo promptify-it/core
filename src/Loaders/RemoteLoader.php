@@ -20,7 +20,7 @@ class RemoteLoader implements Loader
 
         $response = Http::withToken($token)
             ->acceptJson()
-            ->get('http://dcli-web.test/api/v1/commands');
+            ->get(config('promptify-it.client.url').'/api/v1/commands');
 
         if ($response->json() == null) {
             return collect([]);
