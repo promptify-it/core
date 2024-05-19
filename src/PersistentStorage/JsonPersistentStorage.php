@@ -11,15 +11,6 @@ class JsonPersistentStorage implements PersistentStorage
 
     protected $loaded = false;
 
-    protected function data(): array
-    {
-        if (empty($this->data)) {
-            $this->data = $this->load();
-        }
-
-        return $this->data;
-    }
-
     protected function load(): array
     {
         $data = [];
@@ -39,7 +30,7 @@ class JsonPersistentStorage implements PersistentStorage
             mkdir(dirname($this->path()), 0777, true);
         }
 
-        file_put_contents($this->path(), json_encode($this->data(), JSON_PRETTY_PRINT));
+        file_put_contents($this->path(), json_encode($this->data, JSON_PRETTY_PRINT));
     }
 
     /**
@@ -47,7 +38,7 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function get(string $key, $default = null): mixed
     {
-        return Arr::get($this->data(), $key, $default);
+        return Arr::get($this->data, $key, $default);
     }
 
     /**
@@ -55,9 +46,7 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function set(string $key, $value): void
     {
-        $data = $this->data();
-
-        Arr::set($data, $key, $value);
+        Arr::set($this->data, $key, $value);
 
         $this->save();
     }
@@ -67,7 +56,7 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function has(string $key): bool
     {
-        return Arr::has($this->data(), $key);
+        return Arr::has($this->data, $key);
     }
 
     /**
@@ -75,7 +64,7 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function remove(string $key): void
     {
-        $data = $this->data();
+        $data = $this->data;
 
         Arr::forget($data, $key);
 
@@ -97,7 +86,7 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function all(): array
     {
-        return $this->data();
+        return $this->data;
     }
 
     /**
