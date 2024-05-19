@@ -16,9 +16,8 @@ class Transverser
     public function transverse(): void
     {
         $data = [
-            'COMMAND_SIGNATURE' => $this->commandData->signature,
-            'EXECUTION_TIME' => now()->format('Y-m-d H:i:s'),
-            'PATH' => getcwd(),
+            'PFY_COMMAND_SIGNATURE' => $this->commandData->signature,
+            'PFY_EXECUTION_TIME' => now()->format('Y-m-d H:i:s'),
         ];
 
         collect($this->commandData->root->nodes)->each(function (Executable $node) use (&$data) {
