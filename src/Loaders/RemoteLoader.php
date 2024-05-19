@@ -18,7 +18,9 @@ class RemoteLoader implements Loader
             return collect([]);
         }
 
-        $response = Http::withToken($token)->get('http://dcli-web.test/api/v1/commands');
+        $response = Http::withToken($token)
+            ->acceptJson()
+            ->get('http://dcli-web.test/api/v1/commands');
 
         if ($response->json() == null) {
             return collect([]);
