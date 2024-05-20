@@ -14,15 +14,24 @@ class ArrayToString implements Cast
             return $this->castLines($value);
         }
 
-        if (is_string($value)) {
-            return $value;
+        if (!is_string($value)) {
+            return '';
         }
 
-        return '';
+        if(filter_var($value, FILTER_VALIDATE_URL)) {
+            return $this->downloadFileText($value);
+        }
+
+        return $value;
     }
 
     private function castLines(array $lines): string
     {
         return implode("\n", $lines);
+    }
+
+    private function downloadFileText(string $url): string
+    {
+        return file_get_contents($url);
     }
 }
