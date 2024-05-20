@@ -8,7 +8,7 @@ trait ReplacesWithVariables
     {
         foreach ($variables as $key => $value) {
             $content = str_replace(
-                implode(" ", ["{{", $key, "}}"]),
+                implode(' ', ['{{', $key, '}}']),
                 $value,
                 $content
             );
