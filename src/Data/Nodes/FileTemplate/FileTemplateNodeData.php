@@ -16,12 +16,12 @@ class FileTemplateNodeData extends NodeData implements Executable
         $path = $this->replaceWithVariables($this->content->output, $data);
 
         $this->createDirectory($path);
-        $this->createFile($content);
+        $this->createFile($path, $content);
     }
 
-    private function createFile(string $content)
+    private function createFile(string $path, string $content)
     {
-        $file = fopen($content, 'w');
+        $file = fopen($path, 'w');
 
         if ($this->isCreatingJsonFile()) {
             fwrite($file, json_encode(json_decode($content), JSON_PRETTY_PRINT));
