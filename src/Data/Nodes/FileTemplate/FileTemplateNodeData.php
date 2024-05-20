@@ -12,34 +12,31 @@ class FileTemplateNodeData extends NodeData implements Executable
 {
     public function execute(&$data): void
     {
-        if ($this->content->generateInputForMissingKeys) {
+        $content = $this->replaceWithVariables($this->content->template, $data);
+        $path = $this->replaceWithVariables($this->content->output, $data);
 
-        }
-        $this->content->template = $this->replaceWithVariables($this->content->template, $data);
-        $this->content->output = $this->replaceWithVariables($this->content->output, $data);
-
-        $this->createDirectory();
-        $this->createFile();
+        $this->createDirectory($path);
+        $this->createFile($content);
     }
 
-    private function createFile()
+    private function createFile(string $content)
     {
-        $file = fopen($this->content->output, 'w');
+        $file = fopen($content, 'w');
 
         if ($this->isCreatingJsonFile()) {
-            fwrite($file, json_encode(json_decode($this->content->template), JSON_PRETTY_PRINT));
+            fwrite($file, json_encode(json_decode($content), JSON_PRETTY_PRINT));
             fclose($file);
 
             return;
         }
 
-        fwrite($file, $this->content->template);
+        fwrite($file, $content);
         fclose($file);
     }
 
-    private function createDirectory()
+    private function createDirectory(string $path)
     {
-        $directory = dirname($this->content->output);
+        $directory = dirname($path);
 
         if (! is_dir($directory)) {
             mkdir($directory, 0755, true);
