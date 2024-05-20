@@ -2,6 +2,8 @@
 
 namespace PromptifyIt\PromptifyIt\Data\Nodes\SelectInput;
 
+use PromptifyIt\PromptifyIt\Castables\StringToArray;
+use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Data;
 
 class SelectInputNodeContentData extends Data
@@ -9,6 +11,7 @@ class SelectInputNodeContentData extends Data
     public function __construct(
         public string $key,
         public string $label,
+        #[WithCast(StringToArray::class)]
         public array $options,
         public null|int|string $default = null,
         public int $scroll = 5,
