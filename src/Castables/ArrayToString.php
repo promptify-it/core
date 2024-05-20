@@ -14,11 +14,11 @@ class ArrayToString implements Cast
             return $this->castLines($value);
         }
 
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             return '';
         }
 
-        if(filter_var($value, FILTER_VALIDATE_URL)) {
+        if (filter_var($value, FILTER_VALIDATE_URL)) {
             return $this->downloadFileText($value);
         }
 

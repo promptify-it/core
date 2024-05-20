@@ -14,10 +14,10 @@ class StringToArray implements Cast
             return $value;
         }
 
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             return [];
         }
 
-        return explode(",", $value);
+        return explode(',', $value);
     }
 }
