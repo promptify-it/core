@@ -49,6 +49,26 @@ class PromptifyItServiceProvider extends PackageServiceProvider
     }
 
     /**
+     * Bind the command factory.
+     */
+    protected function bindCommandFactory(): self
+    {
+        $this->app->bind(Contracts\CommandFactory::class, CommandFactory::class);
+
+        return $this;
+    }
+
+    /**
+     * Bind the data piper.
+     */
+    protected function bindDataPiper(): self
+    {
+        $this->app->bind(Contracts\DataPiper::class, DataPipers\DataPiper::class);
+
+        return $this;
+    }
+
+    /**
      * Bind the loader.
      */
     public function bindLoader(): self
@@ -58,22 +78,11 @@ class PromptifyItServiceProvider extends PackageServiceProvider
         return $this;
     }
 
-    /**
-     * Bind the transverser.
-     */
-    protected function bindTransverser(): self
+    public function bindNodesUsingType(): self
     {
-        $this->app->bind(Contracts\Transverser::class, Transverser::class);
+        $nodeClasses = $this->autoloadNodes();
 
-        return $this;
-    }
-
-    /**
-     * Bind the command factory.
-     */
-    protected function bindCommandFactory(): self
-    {
-        $this->app->bind(Contracts\CommandFactory::class, CommandFactory::class);
+        $this->app->bind('promptify-it.nodes', fn () => $nodeClasses);
 
         return $this;
     }
@@ -88,11 +97,12 @@ class PromptifyItServiceProvider extends PackageServiceProvider
         return $this;
     }
 
-    public function bindNodesUsingType(): self
+    /**
+     * Bind the transverser.
+     */
+    protected function bindTransverser(): self
     {
-        $nodeClasses = $this->autoloadNodes();
-
-        $this->app->bind('promptify-it.nodes', fn () => $nodeClasses);
+        $this->app->bind(Contracts\Transverser::class, Transverser::class);
 
         return $this;
     }
