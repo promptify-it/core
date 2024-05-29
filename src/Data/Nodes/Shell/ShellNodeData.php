@@ -21,7 +21,7 @@ class ShellNodeData extends NodeData implements Executable
 
         $script = $this->content->script;
 
-        if (!str_ends_with($script, ';')) {
+        if (! str_ends_with($script, ';')) {
             $script .= ';';
         }
 
