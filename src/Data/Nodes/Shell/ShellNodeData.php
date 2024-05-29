@@ -19,7 +19,7 @@ class ShellNodeData extends NodeData implements Executable
             2 => ['pipe', 'w'],  // Standard error
         ];
 
-        $script = $this->content->script . 'env > ' . $dataPiper->path();
+        $script = $this->content->script.'env > '.$dataPiper->path();
 
         $proc = proc_open($script, $descriptorSpec, $pipes, null, $dataPiper->all());
 
@@ -45,7 +45,7 @@ class ShellNodeData extends NodeData implements Executable
 
                 // Check if the process has terminated
                 $status = proc_get_status($proc);
-                if (!$status['running']) {
+                if (! $status['running']) {
                     break;
                 }
 

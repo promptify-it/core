@@ -4,7 +4,6 @@ namespace PromptifyIt\PromptifyIt\Data;
 
 use PromptifyIt\PromptifyIt\Data\Nodes\RootNodeData;
 use Spatie\LaravelData\Data;
-use PromptifyIt\PromptifyIt\Data\CommandOptionsData;
 use Spatie\LaravelData\Optional;
 
 class CommandData extends Data

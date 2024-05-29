@@ -3,7 +3,6 @@
 namespace PromptifyIt\PromptifyIt\DataPipers;
 
 use Dotenv\Dotenv;
-
 use PromptifyIt\PromptifyIt\Contracts\PersistentStorage;
 
 /**
@@ -29,7 +28,7 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
      */
     private function composeKey(string $key): string
     {
-        return $this->persistenceStoragePath() . '.' . $key;
+        return $this->persistenceStoragePath().'.'.$key;
     }
 
     /**
@@ -45,11 +44,11 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
      */
     private function persistenceStoragePath(): string
     {
-        return 'commands.' . $this->commandId . '.data_piper';
+        return 'commands.'.$this->commandId.'.data_piper';
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function set(string $key, $value): void
     {
@@ -57,15 +56,15 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function path(): string
     {
-        return dirname($this->persistenceStorage()->path()) . '/.' . $this->id;
+        return dirname($this->persistenceStorage()->path()).'/.'.$this->id;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function merge(array $data): static
     {
@@ -78,7 +77,7 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function mergeFromPipe(): static
     {
@@ -94,7 +93,7 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function get(string $key, $default = null)
     {
@@ -102,7 +101,7 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function all(): array
     {
@@ -110,15 +109,15 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function clear(): void
     {
-        $this->persistenceStorage()->remove('commands.' . $this->commandId);
+        $this->persistenceStorage()->remove('commands.'.$this->commandId);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function has(string $key): bool
     {
@@ -126,7 +125,7 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function remove(string $key): void
     {
@@ -147,13 +146,13 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
         foreach ($lines as $line) {
             $line = trim($line);
 
-            if (!empty($line)) {
+            if (! empty($line)) {
                 $splitted = explode('=', $line);
 
-                if (count($splitted) === 2 && !is_numeric($splitted[1]) && !in_array($splitted[1], ['true', 'false'])) {
-                    $qualifiedContent .= $splitted[0] . '="' . $splitted[1] . '"' . "\n";
+                if (count($splitted) === 2 && ! is_numeric($splitted[1]) && ! in_array($splitted[1], ['true', 'false'])) {
+                    $qualifiedContent .= $splitted[0].'="'.$splitted[1].'"'."\n";
                 } else {
-                    $qualifiedContent .= $line . "\n";
+                    $qualifiedContent .= $line."\n";
                 }
             }
         }

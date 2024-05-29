@@ -13,7 +13,7 @@ class CommandDataHandler
         public CommandData $commandData,
     ) {
         $this->dataPiper = app(DataPiper::class, [
-            'commandId' => $this->commandData->id
+            'commandId' => $this->commandData->id,
         ]);
     }
 
