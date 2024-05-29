@@ -80,9 +80,7 @@ class JsonPersistentStorage implements PersistentStorage
             $this->data = $this->load();
         }
 
-        $data = $this->data;
-
-        Arr::forget($data, $key);
+        Arr::forget($this->data, $key);
 
         $this->save();
     }
@@ -92,6 +90,10 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function clear(): void
     {
+        foreach ($this->data as $key => $value) {
+            Arr::forget($this->data, $key);
+        }
+
         $this->data = [];
 
         $this->save();
@@ -114,6 +116,6 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function path(): string
     {
-        return getenv('HOME').'/.dcli/storage.json';
+        return $_ENV['HOME'].'/.pfy/storage.json';
     }
 }
