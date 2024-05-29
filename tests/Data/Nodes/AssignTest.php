@@ -5,7 +5,7 @@ it('can instanciate', function () {
         'content' => [
             'key' => 'key',
             'value' => 'value',
-        ]
+        ],
     ]);
 
     expect($commandOptionsData)->toBeInstanceOf(PromptifyIt\PromptifyIt\Data\Nodes\Assign\AssignNodeData::class);

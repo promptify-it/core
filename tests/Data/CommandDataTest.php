@@ -1,11 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Artisan;
-use PromptifyIt\PromptifyIt\CommandDataHandler;
-use PromptifyIt\PromptifyIt\CommandFactory;
-
-use function Amp\ByteStream\getStdout;
-
 it('can instanciate', function () {
     $commandData = PromptifyIt\PromptifyIt\Data\CommandData::from([
         'id' => 'eeb1b3b1-0b3b-4b1b-8b1b-0b3b1b3b1b3b',
@@ -26,7 +20,7 @@ it('can instanciate without options', function () {
         'description' => 'description',
         'root' => [
             'nodes' => [],
-        ]
+        ],
     ]);
 
     expect($commandData->options)->toBeInstanceOf(PromptifyIt\PromptifyIt\Data\CommandOptionsData::class);
@@ -42,8 +36,8 @@ it('can instanciate with options', function () {
             'nodes' => [],
         ],
         'options' => [
-            'shouldLoadDotenv' => false
-        ]
+            'shouldLoadDotenv' => false,
+        ],
     ]);
 
     expect($commandData->options->shouldLoadDotenv)->toBeFalse();
@@ -59,7 +53,7 @@ it('can instanciate with empty options', function () {
         ],
         'options' => [
             'workingDirectory' => __DIR__,
-        ]
+        ],
     ]);
 
     expect($commandData->options->shouldLoadDotenv)->toBeTrue();

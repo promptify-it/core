@@ -6,7 +6,7 @@ it('can instanciate', function () {
             'left' => 'value',
             'operator' => '==',
             'right' => 'false',
-        ]
+        ],
     ]);
 
     expect($commandOptionsData)->toBeInstanceOf(PromptifyIt\PromptifyIt\Data\Nodes\Condition\ConditionNodeData::class);

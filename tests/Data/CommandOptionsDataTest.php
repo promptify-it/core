@@ -8,7 +8,7 @@ it('can instanciate', function () {
 
 it('can instanciate with shouldLoadDotenv', function () {
     $commandOptionsData = PromptifyIt\PromptifyIt\Data\CommandOptionsData::from([
-        'shouldLoadDotenv' => false
+        'shouldLoadDotenv' => false,
     ]);
 
     expect($commandOptionsData->shouldLoadDotenv)->toBeFalse();
