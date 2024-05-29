@@ -19,7 +19,13 @@ class ShellNodeData extends NodeData implements Executable
             2 => ['pipe', 'w'],  // Standard error
         ];
 
-        $script = $this->content->script.'env > '.$dataPiper->path();
+        $script = $this->content->script;
+
+        if (!str_ends_with($script, ';')) {
+            $script .= ';';
+        }
+
+        $script .= 'env > '.$dataPiper->path();
 
         $proc = proc_open($script, $descriptorSpec, $pipes, null, $dataPiper->all());
 
