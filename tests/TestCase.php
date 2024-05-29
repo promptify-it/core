@@ -5,6 +5,7 @@ namespace PromptifyIt\PromptifyIt\Tests;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use PromptifyIt\PromptifyIt\PromptifyItServiceProvider;
+use Spatie\LaravelData\LaravelDataServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -21,16 +22,12 @@ class TestCase extends Orchestra
     {
         return [
             PromptifyItServiceProvider::class,
+            LaravelDataServiceProvider::class,
         ];
     }
 
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_promptify-it_table.php.stub';
-        $migration->up();
-        */
     }
 }
