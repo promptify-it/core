@@ -2,29 +2,15 @@
 
 namespace PromptifyIt\PromptifyIt\Contracts;
 
-interface DataPiper
+interface DataPiper extends PersistentStorage
 {
-    public function set(array $data): static;
-
-    public function merge(array $data): static;
-
     /**
-     * Get path of the pipe file.
+     * Merge data into the data piper.
      */
-    public function pipePath(): string;
+    public function merge(array $data): static;
 
     /**
      * Merge data from pipe file and remove it.
      */
     public function mergeFromPipe(): static;
-
-    /**
-     * Get the data stored in the data piper.
-     */
-    public function get(): array;
-
-    /**
-     * Clear the data stored in the data piper.
-     */
-    public function clear(): void;
 }

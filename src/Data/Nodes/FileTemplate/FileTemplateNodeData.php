@@ -2,6 +2,7 @@
 
 namespace PromptifyIt\PromptifyIt\Data\Nodes\FileTemplate;
 
+use PromptifyIt\PromptifyIt\Contracts\DataPiper;
 use PromptifyIt\PromptifyIt\Contracts\Executable;
 use PromptifyIt\PromptifyIt\Data\Nodes\NodeData;
 
@@ -10,10 +11,10 @@ use PromptifyIt\PromptifyIt\Data\Nodes\NodeData;
  */
 class FileTemplateNodeData extends NodeData implements Executable
 {
-    public function execute(&$data): void
+    public function execute(DataPiper $dataPiper): void
     {
-        $content = $this->replaceWithVariables($this->content->template, $data);
-        $path = $this->replaceWithVariables($this->content->output, $data);
+        $content = $this->replaceWithVariables($this->content->template, $dataPiper->get());
+        $path = $this->replaceWithVariables($this->content->output, $dataPiper->get());
 
         $this->createDirectory($path);
         $this->createFile($path, $content);

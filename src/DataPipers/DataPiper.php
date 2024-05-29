@@ -25,6 +25,14 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
     }
 
     /**
+     * Compose the key for the data piper storage.
+     */
+    private function composeKey(string $key): string
+    {
+        return $this->persistenceStoragePath() . '.' . $key;
+    }
+
+    /**
      * Get the instance of the persistent storage.
      */
     private function persistenceStorage(): PersistentStorage
@@ -40,40 +48,89 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
         return 'commands.' . $this->commandId . '.data_piper';
     }
 
-    public function set(array $data): static
+    /**
+     * @inheritDoc
+     */
+    public function set(string $key, $value): void
     {
-        $this->persistenceStorage()->set($this->persistenceStoragePath(), $data);
-
-        return $this;
+        $this->persistenceStorage()->set($this->composeKey($key), $value);
     }
 
-    public function pipePath(): string
+    /**
+     * @inheritDoc
+     */
+    public function path(): string
     {
         return dirname($this->persistenceStorage()->path()) . '/.' . $this->id;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function merge(array $data): static
     {
         $this->persistenceStorage()->set(
             $this->persistenceStoragePath(),
-            array_merge($this->get(), $data)
+            array_merge($this->all(), $data)
         );
 
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function mergeFromPipe(): static
     {
-        $dotenv = Dotenv::parse($this->qualifyEnvContent(file_get_contents($this->pipePath())));
+        $dotenv = Dotenv::parse(
+            $this->qualifyEnvContent(file_get_contents($this->path()))
+        );
 
-        $this->set([
-            ...$this->get(),
-            ...$dotenv,
-        ]);
+        $this->merge($dotenv);
 
-        unlink($this->pipePath());
+        unlink($this->path());
 
         return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function get(string $key, $default = null)
+    {
+        return $this->persistenceStorage()->get($this->composeKey($key), []);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function all(): array
+    {
+        return $this->get($this->persistenceStoragePath());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function clear(): void
+    {
+        $this->persistenceStorage()->remove('commands.' . $this->commandId);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function has(string $key): bool
+    {
+        return $this->persistenceStorage()->has($this->composeKey($key));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function remove(string $key): void
+    {
+        $this->persistenceStorage()->remove($this->composeKey($key));
     }
 
     /**
@@ -102,18 +159,5 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
         }
 
         return $qualifiedContent;
-    }
-
-    public function get(): array
-    {
-        return $this->persistenceStorage()->get($this->persistenceStoragePath(), []);
-    }
-
-    /**
-     * Clear the data stored in the data piper.
-     */
-    public function clear(): void
-    {
-        $this->persistenceStorage()->remove('commands.' . $this->commandId);
     }
 }

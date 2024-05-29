@@ -7,5 +7,5 @@ interface Executable
     /**
      * Execute the command.
      */
-    public function execute(array &$data): void;
+    public function execute(DataPiper $data): void;
 }

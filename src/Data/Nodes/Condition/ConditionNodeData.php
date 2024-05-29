@@ -2,7 +2,9 @@
 
 namespace PromptifyIt\PromptifyIt\Data\Nodes\Condition;
 
+use PromptifyIt\PromptifyIt\Contracts\DataPiper;
 use PromptifyIt\PromptifyIt\Contracts\Executable;
+use PromptifyIt\PromptifyIt\Contracts\Optionable;
 use PromptifyIt\PromptifyIt\Data\Nodes\NodeData;
 
 /**
@@ -10,11 +12,11 @@ use PromptifyIt\PromptifyIt\Data\Nodes\NodeData;
  */
 class ConditionNodeData extends NodeData implements Executable
 {
-    public function execute(&$data): void
+    public function execute(DataPiper $dataPiper): void
     {
-        $left = $this->replaceWithVariables($this->content->left, $data);
+        $left = $this->replaceWithVariables($this->content->left, $dataPiper->get());
         $operator = $this->content->operator;
-        $right = $this->replaceWithVariables($this->content->right, $data);
+        $right = $this->replaceWithVariables($this->content->right, $dataPiper->get());
 
         if ($operator === '==') {
             $result = $left == $right;
@@ -37,7 +39,7 @@ class ConditionNodeData extends NodeData implements Executable
         }
 
         if ($result) {
-            $this->executeNodes($data);
+            $this->executeNodes($dataPiper);
         }
     }
 }

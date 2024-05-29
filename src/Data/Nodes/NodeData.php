@@ -7,6 +7,7 @@ use PromptifyIt\PromptifyIt\Castables\NodeContent;
 use PromptifyIt\PromptifyIt\Concerns\Nodes\ProvidesReplacers;
 use PromptifyIt\PromptifyIt\Concerns\Nodes\ReplacesWithVariables;
 use PromptifyIt\PromptifyIt\Concerns\Nodes\ResolvesNodesRules;
+use PromptifyIt\PromptifyIt\Contracts\DataPiper;
 use PromptifyIt\PromptifyIt\Contracts\Executable;
 use Spatie\LaravelData\Attributes\Computed;
 use Spatie\LaravelData\Attributes\WithCast;
@@ -24,13 +25,16 @@ abstract class NodeData extends Data implements Executable
     #[Computed]
     public string $type;
 
-    public function __construct(
-        #[WithCast(NodeContent::class)]
-        public $content,
-        #[WithCast(Node::class)]
-        public array $nodes = [],
-    ) {
+    #[WithCast(NodeContent::class)]
+    public $content;
+
+    #[WithCast(Node::class)]
+    public array $nodes;
+
+    public function __construct()
+    {
         $this->type = $this->guessType();
+        $this->nodes = [];
     }
 
     public function guessType(): string
@@ -42,9 +46,9 @@ abstract class NodeData extends Data implements Executable
             ->toString();
     }
 
-    protected function executeNodes(&$data): void
+    protected function executeNodes(DataPiper $data): void
     {
-        collect($this->nodes)->each(function (Executable $node) use (&$data) {
+        collect($this->nodes)->each(function (Executable $node) use ($data) {
             $node->execute($data);
         });
     }

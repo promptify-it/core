@@ -2,6 +2,7 @@
 
 namespace PromptifyIt\PromptifyIt\Data\Nodes\Shell;
 
+use PromptifyIt\PromptifyIt\Contracts\DataPiper;
 use PromptifyIt\PromptifyIt\Contracts\Executable;
 use PromptifyIt\PromptifyIt\Data\Nodes\NodeData;
 
@@ -10,21 +11,56 @@ use PromptifyIt\PromptifyIt\Data\Nodes\NodeData;
  */
 class ShellNodeData extends NodeData implements Executable
 {
-    public function execute(&$data): void
+    public function execute(DataPiper $dataPiper): void
     {
         $descriptorSpec = [
-            0 => ['pipe', 'r'],
-            1 => ['pipe', 'w'],
-            2 => ['pipe', 'w'],
+            0 => ['pipe', 'r'],  // Standard input
+            1 => ['pipe', 'w'],  // Standard output
+            2 => ['pipe', 'w'],  // Standard error
         ];
 
-        $proc = proc_open($this->content->script, $descriptorSpec, $pipes, null, $data);
+        $script = $this->content->script . 'env > ' . $dataPiper->pipePath();
+
+        $proc = proc_open($script, $descriptorSpec, $pipes, null, $dataPiper->get());
 
         if (is_resource($proc)) {
-            echo stream_get_contents($pipes[1]);
+            // Set the pipes to non-blocking mode
+            stream_set_blocking($pipes[1], false);
+            stream_set_blocking($pipes[2], false);
+
+            // Close standard input as it's not needed
+            fclose($pipes[0]);
+
+            while (true) {
+                $stdout = stream_get_contents($pipes[1]);
+                $stderr = stream_get_contents($pipes[2]);
+
+                if ($stdout !== false && $stdout !== '') {
+                    echo $stdout;
+                }
+
+                if ($stderr !== false && $stderr !== '') {
+                    echo $stderr;
+                }
+
+                // Check if the process has terminated
+                $status = proc_get_status($proc);
+                if (!$status['running']) {
+                    break;
+                }
+
+                // Small sleep to prevent busy waiting
+                usleep(100000); // 0.1 seconds
+            }
+
+            // Close the remaining pipes
             fclose($pipes[1]);
             fclose($pipes[2]);
+
+            // Close the process
             proc_close($proc);
         }
+
+        $dataPiper->mergeFromPipe();
     }
 }
