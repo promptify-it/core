@@ -4,6 +4,7 @@ namespace PromptifyIt\PromptifyIt;
 
 use Illuminate\Console\Command;
 use PromptifyIt\PromptifyIt\Contracts\CommandFactory as CommandFactoryContract;
+use PromptifyIt\PromptifyIt\Contracts\Optionable;
 use PromptifyIt\PromptifyIt\Data\CommandData;
 
 class CommandFactory implements CommandFactoryContract
@@ -26,7 +27,7 @@ class CommandFactory implements CommandFactoryContract
 
             public function handle(): void
             {
-                (new Transverser($this->commandData))->transverse();
+                (new CommandDataHandler($this->commandData))->handle();
             }
         };
     }
