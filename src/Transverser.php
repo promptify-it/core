@@ -2,6 +2,7 @@
 
 namespace PromptifyIt\PromptifyIt;
 
+use PromptifyIt\PromptifyIt\Contracts\DataPiper;
 use PromptifyIt\PromptifyIt\Contracts\Executable;
 use PromptifyIt\PromptifyIt\Data\CommandData;
 
@@ -13,16 +14,10 @@ class Transverser
         //
     }
 
-    public function transverse(): void
+    public function transverse(DataPiper $dataPiper): void
     {
-        $data = [
-            'PFY_COMMAND_SIGNATURE' => $this->commandData->signature,
-            'PFY_EXECUTION_TIME' => now()->format('Y-m-d H:i:s'),
-            ...getenv(),
-        ];
-
-        collect($this->commandData->root->nodes)->each(function (Executable $node) use (&$data) {
-            $node->execute($data);
+        collect($this->commandData->root->nodes)->each(function (Executable $node) use (&$dataPiper) {
+            $node->execute($dataPiper);
         });
     }
 }
