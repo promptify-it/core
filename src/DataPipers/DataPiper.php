@@ -105,7 +105,7 @@ class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
      */
     public function all(): array
     {
-        return $this->get($this->persistenceStoragePath());
+        return $this->persistenceStorage()->get($this->persistenceStoragePath(), []);
     }
 
     /**
