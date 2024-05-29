@@ -4,7 +4,6 @@ namespace PromptifyIt\PromptifyIt\Data\Nodes\SelectInput;
 
 use PromptifyIt\PromptifyIt\Contracts\DataPiper;
 use PromptifyIt\PromptifyIt\Contracts\Executable;
-use PromptifyIt\PromptifyIt\Contracts\Optionable;
 use PromptifyIt\PromptifyIt\Data\Nodes\NodeData;
 
 use function Laravel\Prompts\select;
@@ -26,6 +25,6 @@ class SelectInputNodeData extends NodeData implements Executable
             $this->content->required,
         );
 
-        $data[$this->content->key] = $value;
+        $dataPiper->set($this->content->key, $value);
     }
 }

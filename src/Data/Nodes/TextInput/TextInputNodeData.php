@@ -4,7 +4,6 @@ namespace PromptifyIt\PromptifyIt\Data\Nodes\TextInput;
 
 use PromptifyIt\PromptifyIt\Contracts\DataPiper;
 use PromptifyIt\PromptifyIt\Contracts\Executable;
-use PromptifyIt\PromptifyIt\Contracts\Optionable;
 use PromptifyIt\PromptifyIt\Data\Nodes\NodeData;
 
 use function Laravel\Prompts\text;
@@ -12,7 +11,7 @@ use function Laravel\Prompts\text;
 /**
  * @property TextInputNodeContentData $content
  */
-class TextInputNodeData extends NodeData implements Executable, Optionable
+class TextInputNodeData extends NodeData implements Executable
 {
     public function execute(DataPiper $dataPiper): void
     {
@@ -25,27 +24,15 @@ class TextInputNodeData extends NodeData implements Executable, Optionable
             $this->content->hint
         );
 
-        $data[$this->content->key] = $value;
+        $dataPiper->set($this->content->key, $value);
 
         if (is_string($value)) {
-            $this->provideReplacersFor($this->content->key, $value, $dataPiper->get());
+            $this->provideReplacersFor($this->content->key, $value, $dataPiper->all());
         }
     }
 
     private function resolveDefault(DataPiper $dataPiper): string
     {
-        return $this->replaceWithVariables($this->content->default, $dataPiper->get());
-    }
-
-    public function asOptions(): array
-    {
-        return [
-            [
-                'default' => $this->content->default,
-                'required' => $this->content->required,
-                'name' => str($this->content->key)->kebab()->toString(),
-                'description' => $this->content->hint,
-            ],
-        ];
+        return $this->replaceWithVariables($this->content->default, $dataPiper->all());
     }
 }

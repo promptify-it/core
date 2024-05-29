@@ -4,7 +4,6 @@ namespace PromptifyIt\PromptifyIt;
 
 use Illuminate\Console\Command;
 use PromptifyIt\PromptifyIt\Contracts\CommandFactory as CommandFactoryContract;
-use PromptifyIt\PromptifyIt\Contracts\Optionable;
 use PromptifyIt\PromptifyIt\Data\CommandData;
 
 class CommandFactory implements CommandFactoryContract

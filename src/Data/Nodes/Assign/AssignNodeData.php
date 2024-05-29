@@ -13,13 +13,13 @@ class AssignNodeData extends NodeData implements Executable
 {
     public function execute(DataPiper $dataPiper): void
     {
-        $data[$this->content->key] = $this->content->value;
+        $dataPiper->set($this->content->key, $this->content->value);
 
         if (is_string($this->content->value)) {
             $this->provideReplacersFor(
                 $this->content->key,
                 $this->content->value,
-                $dataPiper->get()
+                $dataPiper->all()
             );
         }
     }

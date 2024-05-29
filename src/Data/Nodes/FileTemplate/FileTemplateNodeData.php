@@ -13,8 +13,8 @@ class FileTemplateNodeData extends NodeData implements Executable
 {
     public function execute(DataPiper $dataPiper): void
     {
-        $content = $this->replaceWithVariables($this->content->template, $dataPiper->get());
-        $path = $this->replaceWithVariables($this->content->output, $dataPiper->get());
+        $content = $this->replaceWithVariables($this->content->template, $dataPiper->all());
+        $path = $this->replaceWithVariables($this->content->output, $dataPiper->all());
 
         $this->createDirectory($path);
         $this->createFile($path, $content);

@@ -4,7 +4,6 @@ namespace PromptifyIt\PromptifyIt\Data\Nodes\PasswordInput;
 
 use PromptifyIt\PromptifyIt\Contracts\DataPiper;
 use PromptifyIt\PromptifyIt\Contracts\Executable;
-use PromptifyIt\PromptifyIt\Contracts\Optionable;
 use PromptifyIt\PromptifyIt\Data\Nodes\NodeData;
 
 use function Laravel\Prompts\password;
@@ -24,6 +23,6 @@ class PasswordInputNodeData extends NodeData implements Executable
             $this->content->hint
         );
 
-        $data[$this->content->key] = $value;
+        $dataPiper->set($this->content->key, $value);
     }
 }

@@ -19,9 +19,9 @@ class ShellNodeData extends NodeData implements Executable
             2 => ['pipe', 'w'],  // Standard error
         ];
 
-        $script = $this->content->script . 'env > ' . $dataPiper->pipePath();
+        $script = $this->content->script . 'env > ' . $dataPiper->path();
 
-        $proc = proc_open($script, $descriptorSpec, $pipes, null, $dataPiper->get());
+        $proc = proc_open($script, $descriptorSpec, $pipes, null, $dataPiper->all());
 
         if (is_resource($proc)) {
             // Set the pipes to non-blocking mode
