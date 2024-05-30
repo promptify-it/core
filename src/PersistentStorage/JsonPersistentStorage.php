@@ -116,6 +116,6 @@ class JsonPersistentStorage implements PersistentStorage
      */
     public function path(): string
     {
-        return $_ENV['HOME'].'/.pfy/storage.json';
+        return getenv('HOME').'/.pfy/storage.json';
     }
 }
