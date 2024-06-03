@@ -2,6 +2,8 @@
 
 namespace PromptifyIt\PromptifyIt\Concerns\Nodes;
 
+use PromptifyIt\PromptifyIt\Contracts\DataPiper;
+
 trait ProvidesReplacers
 {
     public $transformerGlue = '_';
@@ -9,14 +11,14 @@ trait ProvidesReplacers
     /**
      * Provide replacers for the given key and value.
      */
-    public function provideReplacersFor(string $key, string $value, array &$data)
+    public function provideReplacersFor(string $key, string $value, DataPiper $data)
     {
-        $data[$this->composeKey($key, 'upper')] = str($value)->upper()->toString();
-        $data[$this->composeKey($key, 'lower')] = str($value)->lower()->toString();
-        $data[$this->composeKey($key, 'camel')] = str($value)->camel()->toString();
-        $data[$this->composeKey($key, 'snake')] = str($value)->snake()->toString();
-        $data[$this->composeKey($key, 'kebab')] = str($value)->kebab()->toString();
-        $data[$this->composeKey($key, 'studly')] = str($value)->studly()->toString();
+        $data->set($this->composeKey($key, 'upper'), str($value)->upper()->toString());
+        $data->set($this->composeKey($key, 'lower'), str($value)->lower()->toString());
+        $data->set($this->composeKey($key, 'camel'), str($value)->camel()->toString());
+        $data->set($this->composeKey($key, 'snake'), str($value)->snake()->toString());
+        $data->set($this->composeKey($key, 'kebab'), str($value)->kebab()->toString());
+        $data->set($this->composeKey($key, 'studly'), str($value)->studly()->toString());
     }
 
     private function composeKey(string $key, string $transformer): string
