@@ -19,7 +19,7 @@ class AssignNodeData extends NodeData implements Executable
             $this->provideReplacersFor(
                 $this->content->key,
                 $this->content->value,
-                $dataPiper->all()
+                $dataPiper,
             );
         }
     }

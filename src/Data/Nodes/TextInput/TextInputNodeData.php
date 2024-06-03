@@ -27,7 +27,11 @@ class TextInputNodeData extends NodeData implements Executable
         $dataPiper->set($this->content->key, $value);
 
         if (is_string($value)) {
-            $this->provideReplacersFor($this->content->key, $value, $dataPiper);
+            $this->provideReplacersFor(
+                $this->content->key,
+                $value,
+                $dataPiper
+            );
         }
     }
 
