@@ -23,14 +23,6 @@ class FileTemplateNodeData extends NodeData implements Executable
     private function createFile(string $path, string $content)
     {
         $file = fopen($path, 'w');
-
-        if ($this->isCreatingJsonFile()) {
-            fwrite($file, json_encode(json_decode($content), JSON_PRETTY_PRINT));
-            fclose($file);
-
-            return;
-        }
-
         fwrite($file, $content);
         fclose($file);
     }
@@ -42,10 +34,5 @@ class FileTemplateNodeData extends NodeData implements Executable
         if (! is_dir($directory)) {
             mkdir($directory, 0755, true);
         }
-    }
-
-    private function isCreatingJsonFile()
-    {
-        return pathinfo($this->content->output, PATHINFO_EXTENSION) === 'json';
     }
 }
