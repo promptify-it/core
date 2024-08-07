@@ -1,8 +1,8 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Concerns\Nodes;
+namespace Pfy\Core\Concerns\Nodes;
 
-use PromptifyIt\PromptifyIt\Contracts\DataPiper;
+use Pfy\Core\Contracts\DataPiper;
 
 trait ProvidesReplacers
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Data\Nodes;
+namespace Pfy\Core\Data\Nodes;
 
-use PromptifyIt\PromptifyIt\Castables\Node;
-use PromptifyIt\PromptifyIt\Concerns\Nodes\ResolvesNodesRules;
+use Pfy\Core\Castables\Node;
+use Pfy\Core\Concerns\Nodes\ResolvesNodesRules;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Data;
 

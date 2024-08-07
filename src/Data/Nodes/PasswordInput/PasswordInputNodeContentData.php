@@ -1,6 +1,6 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Data\Nodes\PasswordInput;
+namespace Pfy\Core\Data\Nodes\PasswordInput;
 
 use Spatie\LaravelData\Data;
 

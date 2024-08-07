@@ -1,8 +1,8 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Contracts;
+namespace Pfy\Core\Contracts;
 
-use PromptifyIt\PromptifyIt\Data\UserData;
+use Pfy\Core\Data\UserData;
 
 interface Authenticator
 {

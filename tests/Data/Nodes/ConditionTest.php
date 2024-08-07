@@ -1,7 +1,7 @@
 <?php
 
 it('can instanciate', function () {
-    $commandOptionsData = PromptifyIt\PromptifyIt\Data\Nodes\Condition\ConditionNodeData::from([
+    $commandOptionsData = Pfy\Core\Data\Nodes\Condition\ConditionNodeData::from([
         'content' => [
             'left' => 'value',
             'operator' => '==',
@@ -9,7 +9,7 @@ it('can instanciate', function () {
         ],
     ]);
 
-    expect($commandOptionsData)->toBeInstanceOf(PromptifyIt\PromptifyIt\Data\Nodes\Condition\ConditionNodeData::class);
+    expect($commandOptionsData)->toBeInstanceOf(Pfy\Core\Data\Nodes\Condition\ConditionNodeData::class);
 
     expect($commandOptionsData->content->left)->toBe('value');
     expect($commandOptionsData->content->operator)->toBe('==');

@@ -1,6 +1,6 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Data;
+namespace Pfy\Core\Data;
 
 use Spatie\LaravelData\Data;
 

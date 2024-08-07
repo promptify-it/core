@@ -52,7 +52,7 @@ php artisan vendor:publish --tag="promptify-it-views"
 ## Usage
 
 ```php
-$promptifyIt = new PromptifyIt\PromptifyIt();
+$promptifyIt = new Pfy\Core();
 echo $promptifyIt->echoPhrase('Hello, PromptifyIt!');
 ```
 

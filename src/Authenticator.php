@@ -1,12 +1,12 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt;
+namespace Pfy\Core;
 
 use Exception;
 use Illuminate\Support\Facades\Http;
-use PromptifyIt\PromptifyIt\Contracts\Authenticator as AuthenticatorContract;
-use PromptifyIt\PromptifyIt\Data\UserData;
-use PromptifyIt\PromptifyIt\Facades\PersistentStorage;
+use Pfy\Core\Contracts\Authenticator as AuthenticatorContract;
+use Pfy\Core\Data\UserData;
+use Pfy\Core\Facades\PersistentStorage;
 
 class Authenticator implements AuthenticatorContract
 {

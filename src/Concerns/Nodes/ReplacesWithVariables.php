@@ -1,6 +1,6 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Concerns\Nodes;
+namespace Pfy\Core\Concerns\Nodes;
 
 trait ReplacesWithVariables
 {

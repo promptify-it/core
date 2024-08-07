@@ -1,6 +1,6 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Data\Nodes\Assign;
+namespace Pfy\Core\Data\Nodes\Assign;
 
 use Spatie\LaravelData\Data;
 

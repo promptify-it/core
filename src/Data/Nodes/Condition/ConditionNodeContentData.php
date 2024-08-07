@@ -1,6 +1,6 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Data\Nodes\Condition;
+namespace Pfy\Core\Data\Nodes\Condition;
 
 use Spatie\LaravelData\Data;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Data\Nodes\FileTemplate;
+namespace Pfy\Core\Data\Nodes\FileTemplate;
 
-use PromptifyIt\PromptifyIt\Castables\ArrayToString;
+use Pfy\Core\Castables\ArrayToString;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Data;
 

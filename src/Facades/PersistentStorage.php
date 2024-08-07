@@ -1,12 +1,12 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Facades;
+namespace Pfy\Core\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use PromptifyIt\PromptifyIt\Contracts\PersistentStorage as PersistentStorageContract;
+use Pfy\Core\Contracts\PersistentStorage as PersistentStorageContract;
 
 /**
- * @see \PromptifyIt\PromptifyIt\PersistentStorage
+ * @see \Pfy\Core\PersistentStorage
  *
  * @method static void set(string $key, $value)
  * @method static mixed get(string $key, $default = null)

@@ -1,10 +1,10 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt;
+namespace Pfy\Core;
 
 use Illuminate\Console\Command;
-use PromptifyIt\PromptifyIt\Contracts\CommandFactory as CommandFactoryContract;
-use PromptifyIt\PromptifyIt\Data\CommandData;
+use Pfy\Core\Contracts\CommandFactory as CommandFactoryContract;
+use Pfy\Core\Data\CommandData;
 
 class CommandFactory implements CommandFactoryContract
 {

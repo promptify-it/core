@@ -1,6 +1,6 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Castables;
+namespace Pfy\Core\Castables;
 
 use Exception;
 use Spatie\LaravelData\Casts\Cast;

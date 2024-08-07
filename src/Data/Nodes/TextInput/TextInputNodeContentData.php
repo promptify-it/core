@@ -1,6 +1,6 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Data\Nodes\TextInput;
+namespace Pfy\Core\Data\Nodes\TextInput;
 
 use Spatie\LaravelData\Data;
 

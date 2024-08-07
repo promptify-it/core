@@ -1,8 +1,8 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Data\Nodes\SelectInput;
+namespace Pfy\Core\Data\Nodes\SelectInput;
 
-use PromptifyIt\PromptifyIt\Castables\StringToArray;
+use Pfy\Core\Castables\StringToArray;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Data;
 

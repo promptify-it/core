@@ -1,9 +1,9 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\PersistentStorage;
+namespace Pfy\Core\PersistentStorage;
 
 use Illuminate\Support\Arr;
-use PromptifyIt\PromptifyIt\Contracts\PersistentStorage;
+use Pfy\Core\Contracts\PersistentStorage;
 
 class JsonPersistentStorage implements PersistentStorage
 {

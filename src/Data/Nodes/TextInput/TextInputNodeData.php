@@ -1,10 +1,10 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Data\Nodes\TextInput;
+namespace Pfy\Core\Data\Nodes\TextInput;
 
-use PromptifyIt\PromptifyIt\Contracts\DataPiper;
-use PromptifyIt\PromptifyIt\Contracts\Executable;
-use PromptifyIt\PromptifyIt\Data\Nodes\NodeData;
+use Pfy\Core\Contracts\DataPiper;
+use Pfy\Core\Contracts\Executable;
+use Pfy\Core\Data\Nodes\NodeData;
 
 use function Laravel\Prompts\text;
 

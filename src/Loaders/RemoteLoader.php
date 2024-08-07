@@ -1,12 +1,12 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Loaders;
+namespace Pfy\Core\Loaders;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
-use PromptifyIt\PromptifyIt\Contracts\Loader;
-use PromptifyIt\PromptifyIt\Data\CommandData;
-use PromptifyIt\PromptifyIt\Facades\PersistentStorage;
+use Pfy\Core\Contracts\Loader;
+use Pfy\Core\Data\CommandData;
+use Pfy\Core\Facades\PersistentStorage;
 
 class RemoteLoader implements Loader
 {

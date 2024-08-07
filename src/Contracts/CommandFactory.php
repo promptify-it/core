@@ -1,9 +1,9 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Contracts;
+namespace Pfy\Core\Contracts;
 
 use Illuminate\Console\Command;
-use PromptifyIt\PromptifyIt\Data\CommandData;
+use Pfy\Core\Data\CommandData;
 
 interface CommandFactory
 {

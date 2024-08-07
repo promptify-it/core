@@ -1,15 +1,15 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\DataPipers;
+namespace Pfy\Core\DataPipers;
 
 use Dotenv\Dotenv;
-use PromptifyIt\PromptifyIt\Contracts\PersistentStorage;
+use Pfy\Core\Contracts\PersistentStorage;
 
 /**
  * The data piper is responsible for storing the data that is being passed
  * between the nodes of the command.
  */
-class DataPiper implements \PromptifyIt\PromptifyIt\Contracts\DataPiper
+class DataPiper implements \Pfy\Core\Contracts\DataPiper
 {
     /**
      * Each data piper has a unique id.

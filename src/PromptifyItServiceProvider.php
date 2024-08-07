@@ -1,8 +1,8 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt;
+namespace Pfy\Core;
 
-use PromptifyIt\PromptifyIt\PersistentStorage\JsonPersistentStorage;
+use Pfy\Core\PersistentStorage\JsonPersistentStorage;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 

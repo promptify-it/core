@@ -1,14 +1,14 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Data\Nodes;
+namespace Pfy\Core\Data\Nodes;
 
-use PromptifyIt\PromptifyIt\Castables\Node;
-use PromptifyIt\PromptifyIt\Castables\NodeContent;
-use PromptifyIt\PromptifyIt\Concerns\Nodes\ProvidesReplacers;
-use PromptifyIt\PromptifyIt\Concerns\Nodes\ReplacesWithVariables;
-use PromptifyIt\PromptifyIt\Concerns\Nodes\ResolvesNodesRules;
-use PromptifyIt\PromptifyIt\Contracts\DataPiper;
-use PromptifyIt\PromptifyIt\Contracts\Executable;
+use Pfy\Core\Castables\Node;
+use Pfy\Core\Castables\NodeContent;
+use Pfy\Core\Concerns\Nodes\ProvidesReplacers;
+use Pfy\Core\Concerns\Nodes\ReplacesWithVariables;
+use Pfy\Core\Concerns\Nodes\ResolvesNodesRules;
+use Pfy\Core\Contracts\DataPiper;
+use Pfy\Core\Contracts\Executable;
 use Spatie\LaravelData\Attributes\Computed;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Data;

@@ -1,6 +1,6 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Contracts;
+namespace Pfy\Core\Contracts;
 
 interface DataPiper extends PersistentStorage
 {

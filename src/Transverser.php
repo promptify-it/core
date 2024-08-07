@@ -1,10 +1,10 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt;
+namespace Pfy\Core;
 
-use PromptifyIt\PromptifyIt\Contracts\DataPiper;
-use PromptifyIt\PromptifyIt\Contracts\Executable;
-use PromptifyIt\PromptifyIt\Data\CommandData;
+use Pfy\Core\Contracts\DataPiper;
+use Pfy\Core\Contracts\Executable;
+use Pfy\Core\Data\CommandData;
 
 class Transverser
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Data;
+namespace Pfy\Core\Data;
 
-use PromptifyIt\PromptifyIt\Data\Nodes\RootNodeData;
+use Pfy\Core\Data\Nodes\RootNodeData;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Optional;
 

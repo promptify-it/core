@@ -1,10 +1,10 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Tests;
+namespace Pfy\Core\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use PromptifyIt\PromptifyIt\PromptifyItServiceProvider;
+use Pfy\Core\PromptifyItServiceProvider;
 use Spatie\LaravelData\LaravelDataServiceProvider;
 
 class TestCase extends Orchestra

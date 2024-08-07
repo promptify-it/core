@@ -1,5 +1,5 @@
 <?php
 
-use PromptifyIt\PromptifyIt\Tests\TestCase;
+use Pfy\Core\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

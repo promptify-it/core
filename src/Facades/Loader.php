@@ -1,12 +1,12 @@
 <?php
 
-namespace PromptifyIt\PromptifyIt\Facades;
+namespace Pfy\Core\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use PromptifyIt\PromptifyIt\Contracts\Loader as LoaderContract;
+use Pfy\Core\Contracts\Loader as LoaderContract;
 
 /**
- * @see \PromptifyIt\PromptifyIt\Contracts\Commands\Loader
+ * @see \Pfy\Core\Contracts\Commands\Loader
  *
  * @method static \Illuminate\Support\Collection loadCommands()
  */
