@@ -16,6 +16,6 @@ class CommandData extends Data
         public string $description,
         public RootNodeData $root,
     ) {
-        $this->options = new CommandOptionsData();
+        $this->options = new CommandOptionsData;
     }
 }
